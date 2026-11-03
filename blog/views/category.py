@@ -20,7 +20,7 @@ def create_new_category(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-    except IntegrityError:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    except:
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
